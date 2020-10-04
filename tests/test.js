@@ -10,7 +10,7 @@ describe("Students", () => {
         // Test to get all students record
         it("should get all students record", (done) => {
             chai.request(app)
-                .get('/')
+                .get('/api')
                 .end((err, res) => {
                     res.should.have.status(200);
                     res.body.should.be.a('object');
@@ -21,7 +21,7 @@ describe("Students", () => {
         it("should get a single student record", (done) => {
             const id = 1;
             chai.request(app)
-                .get(`/${id}`)
+                .get(`/api/${id}`)
                 .end((err, res) => {
                     res.should.have.status(200);
                     res.body.should.be.a('object');
@@ -31,9 +31,9 @@ describe("Students", () => {
 
         // Test to get single student record
         it("should not get a single student record", (done) => {
-            const id = 6;
+            const id = 100;
             chai.request(app)
-                .get(`/${id}`)
+                .get(`/api/${id}`)
                 .end((err, res) => {
                     res.should.have.status(404);
                     done();
