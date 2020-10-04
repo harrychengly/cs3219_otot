@@ -6,7 +6,7 @@
      "author": "Cheng Lit Yaw",
      "license": "MIT",
      "scripts": {
-          "test": "mocha --require babel-register tests/*.js --exit",
+          "test": "mocha tests/*.js --exit",
           "build": "cd frontend && npm run build",
           "install": "cd frontend && npm install",
           "start": "nodemon ./frontendindex.js ",
