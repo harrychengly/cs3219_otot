@@ -9,7 +9,7 @@
           "test": "mocha --require babel-register tests/*.js --exit",
           "build" : "cd frontend && npm run build",
           "install" : "cd frontend && npm install",
-          "start": "cd frontend && node server.js",
+          "start": "cd frontend && npm run serve",
           "deploy": "serverless deploy"
      },
      "dependencies": {
