@@ -1,3 +1,6 @@
+const {
+      find
+} = require('../dummy/students.js');
 const students = require('../dummy/students.js');
 class StudentController {
       // Get all students
@@ -53,8 +56,11 @@ class StudentController {
       static deleteSingleStudent(req, res) {
             const findStudent = students.find(student => student.id === parseInt(req.params.id, 10));
             if (findStudent) {
-                  console.log(findStudent.id);
-                  students.splice(findStudent.id - 1, 1);
+                  // console.log(findStudent.id);
+                  pos = myArray.map(function (e) {
+                        return e.id;
+                  }).indexOf(findStudent.id);
+                  students.splice(pos, 1);
                   return res.status(200).json({
                         message: "Student record removed",
                   });
