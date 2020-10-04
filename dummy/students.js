@@ -14,6 +14,16 @@ const students = [
      name: 'Janet Dane',
      age: 19,
    },
+   {
+    id: 4,
+    name: 'Jason Cheng',
+    age: 25,
+  },
+  {
+    id: 5,
+    name: 'Joanna Lo',
+    age: 20,
+  },
 ];
 // export default students;
 module.exports = students;
