@@ -5,7 +5,7 @@ deploy:
   region: "ap-southeast-1"
   role: "arn:aws:iam::060486774331:role/restApi-production-ap-southeast-1-lambdaRole"
   runtime: "nodejs10.x"
-  handler_name: "lambda.handler"
+  handler_name: "handler"
   on:
     all_branches: true
 node_js:
