@@ -3,11 +3,11 @@ node_js:
     - "node"
 deploy:
   provider: lambda
-  function_name: "lambda-test",
+  function_name: "restApi-production-api",
   AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID,
   AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY,
   region: "ap-southeast-1"
-  role: "arn:aws:iam::0123456789012:role/lambda_basic_execution"
+  role: "arn:aws:lambda:ap-southeast-1:060486774331:function:restApi-production-api"
   runtime: "nodejs4.3"
   handler_name: "handler"
   on:
