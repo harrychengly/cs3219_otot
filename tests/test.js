@@ -31,7 +31,7 @@ describe("Students", () => {
 
         // Test to get single student record
         it("should not get a single student record", (done) => {
-            const id = 5;
+            const id = 6;
             chai.request(app)
                 .get(`/${id}`)
                 .end((err, res) => {
