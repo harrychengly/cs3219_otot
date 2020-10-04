@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const routes = require('./routes/index');
+var serveStatic = require('serve-static')
 // Instantiate express
 const app = express();
 // Set our port

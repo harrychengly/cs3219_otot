@@ -8,7 +8,7 @@
      "scripts": {
           "test": "mocha --require babel-register tests/*.js --exit",
           "build": "cd frontend && npm run build",
-          "install" : "cd frontend && npm install",
+          "install": "cd frontend && npm install",
           "start": "nodemon --exec babel-node --presets babel-preset-env ./server.js ",
           "deploy": "serverless deploy"
      },
@@ -21,7 +21,8 @@
           "chai-http": "^4.0.0",
           "express": "^4.16.3",
           "mocha": "^5.1.1",
-          "nodemon": "^1.17.4"
+          "nodemon": "^1.17.4",
+          "serve-static": "^1.14.1"
      },
      "devDependencies": {
           "serverless": "^2.4.0"
