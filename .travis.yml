@@ -2,8 +2,6 @@ language: "node_js"
 deploy:
   provider: lambda
   function_name: "restApi-production-api"
-  AWS_ACCESS_KEY_ID: "$AWS_ACCESS_KEY_ID"
-  AWS_SECRET_ACCESS_KEY: "$AWS_SECRET_ACCESS_KEY"
   region: "ap-southeast-1"
   role: "arn:aws:lambda:ap-southeast-1:060486774331:function:restApi-production-api"
   runtime: "nodejs4.3"
