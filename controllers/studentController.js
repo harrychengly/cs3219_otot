@@ -1,4 +1,4 @@
-import students from '../dummy/students.js';
+const students = require('../dummy/students.js');
 class StudentController {
       // Get all students
       static getAllStudents(req, res) {
@@ -23,7 +23,7 @@ class StudentController {
 
       static postSingleStudent(req, res) {
             let student = {};
-            student.id = students[students.length-1].id +1;
+            student.id = students[students.length - 1].id + 1;
             student.name = req.body.name;
             student.age = req.body.age;
             console.log(student)
@@ -54,7 +54,7 @@ class StudentController {
             const findStudent = students.find(student => student.id === parseInt(req.params.id, 10));
             if (findStudent) {
                   console.log(findStudent.id);
-                  students.splice(findStudent.id-1, 1);
+                  students.splice(findStudent.id - 1, 1);
                   return res.status(200).json({
                         message: "Student record removed",
                   });
@@ -66,4 +66,5 @@ class StudentController {
 
 
 }
-export default StudentController;
+// export default StudentController;
+module.exports = StudentController;

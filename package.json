@@ -7,16 +7,21 @@
      "license": "MIT",
      "scripts": {
           "test": "mocha --require babel-register tests/*.js --exit",
-          "start": "nodemon --exec babel-node --presets babel-preset-env ./server.js"
+          "start": "nodemon --exec babel-node --presets babel-preset-env ./server.js",
+          "deploy": "serverless deploy"
      },
      "dependencies": {
-          "body-parser": "^1.18.3",
-          "express": "^4.16.3",
+          "aws-serverless-express": "^3.3.8",
           "babel-cli": "^6.26.0",
           "babel-preset-env": "^1.7.0",
+          "body-parser": "^1.18.3",
           "chai": "^4.1.2",
           "chai-http": "^4.0.0",
+          "express": "^4.16.3",
           "mocha": "^5.1.1",
           "nodemon": "^1.17.4"
+     },
+     "devDependencies": {
+          "serverless": "^2.4.0"
      }
 }
