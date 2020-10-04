@@ -21,7 +21,10 @@ app.use((req, res, next) => {
 
 // Register our routes in app
 app.use('/', routes);
-
+app.use('/', serveStatic(path.join(__dirname, 'frontend/dist')))
+app.get(/.*/, function (req, res) {
+    res.sendFile(path.join(__dirname, '/frontend/dist/index.html'))
+})
 
 // Start our server
 // app.listen(port, () => {
@@ -29,4 +32,5 @@ app.use('/', routes);
 // });
 // Export our app for testing purposes
 // export default app;
+
 module.exports = app
