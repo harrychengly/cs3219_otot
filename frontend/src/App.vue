@@ -150,7 +150,7 @@ export default {
       studentObj["age"] = this.age;
       axios
         .post(
-          "https://ld11fao915.execute-api.ap-southeast-1.amazonaws.com/production/",
+          "https://ld11fao915.execute-api.ap-southeast-1.amazonaws.com/production/api/",
           studentObj
         )
         .then((response) => console.log(response));
@@ -163,7 +163,7 @@ export default {
       if (confirm("Are you sure you want to delete this student?")) {
         axios
           .delete(
-            "https://ld11fao915.execute-api.ap-southeast-1.amazonaws.com/production/" +
+            "https://ld11fao915.execute-api.ap-southeast-1.amazonaws.com/production/api/" +
               student.id
           )
           .then((response) => console.log(response));
@@ -181,7 +181,7 @@ export default {
       studentObj["age"] = this.editAge;
       axios
         .put(
-          "https://ld11fao915.execute-api.ap-southeast-1.amazonaws.com/production/" +
+          "https://ld11fao915.execute-api.ap-southeast-1.amazonaws.com/production/api/" +
             this.editId,
           studentObj
         )
@@ -199,7 +199,7 @@ export default {
     getAllStudents: function () {
       axios
         .get(
-          "https://ld11fao915.execute-api.ap-southeast-1.amazonaws.com/production/"
+          "https://ld11fao915.execute-api.ap-southeast-1.amazonaws.com/production/api/"
         )
         .then((response) => (this.student = response.data.students));
     },
