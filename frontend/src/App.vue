@@ -40,6 +40,8 @@
                 <th class="text-left">ID</th>
                 <th class="text-left">Name</th>
                 <th class="text-left">Age</th>
+                <th class="text-left">Edit</th>
+                <th class="text-left">Delete</th>
               </tr>
             </thead>
             <tbody>
@@ -47,6 +49,30 @@
                 <td>{{ item.id }}</td>
                 <td>{{ item.name }}</td>
                 <td>{{ item.age }}</td>
+                <td>
+                  <v-btn
+                    class="mx-2"
+                    fab
+                    dark
+                    small
+                    color="green"
+                    @click="edit(item)"
+                  >
+                    <v-icon dark>mdi-pencil</v-icon>
+                  </v-btn>
+                </td>
+                <td>
+                  <v-btn
+                    class="mx-2"
+                    fab
+                    dark
+                    small
+                    color="pink"
+                    @click="deleteStudent(item)"
+                  >
+                    <v-icon dark>mdi-delete</v-icon>
+                  </v-btn>
+                </td>
               </tr>
             </tbody>
           </template>
@@ -57,15 +83,12 @@
 </template>
 
 <script>
-// import { BEClient } from "../api/BackendClient";
 import axios from "axios";
 
 export default {
   name: "App",
 
-  components: {
-    // HelloWorld,
-  },
+  components: {},
 
   data() {
     return {
@@ -86,14 +109,18 @@ export default {
         )
         .then((response) => console.log(response));
     },
+    deleteStudent: function (student) {
+      if (confirm("Are you sure you want to delete this student?")) {
+        axios
+          .delete(
+            "https://ld11fao915.execute-api.ap-southeast-1.amazonaws.com/production/" +
+              student.id
+          )
+          .then((response) => console.log(response));
+      }
+    },
   },
   mounted() {
-    // BEClient.loadAllStudents({}).then((response) => {
-    //   if (response.status == 200) {
-    //     this.data = response.data;
-    //     console.log(this.data);
-    //   }
-    // });
     axios
       .get(
         "https://ld11fao915.execute-api.ap-southeast-1.amazonaws.com/production/"
