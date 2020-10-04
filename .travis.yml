@@ -4,7 +4,7 @@ deploy:
   function_name: "restApi-production-api"
   region: "ap-southeast-1"
   role: "arn:aws:iam::060486774331:role/restApi-production-ap-southeast-1-lambdaRole"
-  runtime: "nodejs4.3"
+  runtime: "nodejs10.x"
   handler_name: "handler"
   on:
     all_branches: true
