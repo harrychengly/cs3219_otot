@@ -9,12 +9,11 @@
           "test": "mocha --require babel-register tests/*.js --exit",
           "build": "cd frontend && npm run build",
           "install": "cd frontend && npm install",
-          "start": "nodemon --exec babel-node --presets babel-preset-env ./frontendindex.js ",
+          "start": "nodemon ./frontendindex.js ",
+          "local": "nodemon ./serverlocal.js ",
           "deploy": "serverless deploy"
      },
      "dependencies": {
-          "babel-cli": "^6.26.0",
-          "babel-preset-env": "^1.7.0",
           "body-parser": "^1.18.3",
           "chai": "^4.1.2",
           "chai-http": "^4.0.0",
