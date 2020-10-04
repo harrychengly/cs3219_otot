@@ -30,9 +30,9 @@ app.use('/api', routes);
 // })
 
 // Start our server
-// app.listen(port, () => {
-//     console.log(`Server started on port ${port}`);
-// });
+app.listen(port, () => {
+    console.log(`Server started on port ${port}`);
+});
 // Export our app for testing purposes
 // export default app;
 

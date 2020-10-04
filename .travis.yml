@@ -1,11 +1,13 @@
 language: "node_js"
+install:
+    - npm install -g serverless
+    - npm install
+script:
+    - npm test
 deploy:
-  provider: lambda
-  function_name: "restApi-production-api"
-  region: "ap-southeast-1"
-  role: "arn:aws:iam::060486774331:role/restApi-production-ap-southeast-1-lambdaRole"
-  runtime: "nodejs10.x"
-  handler_name: "handler"
+  skip_cleanup: true
+  provider: script
+  script: sls deploy
   on:
     all_branches: true
 node_js:
