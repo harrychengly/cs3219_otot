@@ -27,44 +27,30 @@
     <v-main>
       <v-card width="90%" class="mx-auto elevation-2">
         <form>
-          <v-text-field
-            v-model="name"
-            :error-messages="nameErrors"
-            :counter="10"
-            label="Name"
-            required
-            @input="$v.name.$touch()"
-            @blur="$v.name.$touch()"
-          ></v-text-field>
-          <v-text-field
-            v-model="email"
-            :error-messages="emailErrors"
-            label="E-mail"
-            required
-            @input="$v.email.$touch()"
-            @blur="$v.email.$touch()"
-          ></v-text-field>
-          <v-select
-            v-model="select"
-            :items="items"
-            :error-messages="selectErrors"
-            label="Item"
-            required
-            @change="$v.select.$touch()"
-            @blur="$v.select.$touch()"
-          ></v-select>
-          <v-checkbox
-            v-model="checkbox"
-            :error-messages="checkboxErrors"
-            label="Do you agree?"
-            required
-            @change="$v.checkbox.$touch()"
-            @blur="$v.checkbox.$touch()"
-          ></v-checkbox>
-
-          <v-btn class="mr-4" @click="submit"> submit </v-btn>
-          <v-btn @click="clear"> clear </v-btn>
+          <v-text-field v-model="name" label="Name" required></v-text-field>
+          <v-text-field v-model="age" label="Age" required></v-text-field>
+          <v-btn class="mr-4" @click="addStudent()"> submit </v-btn>
         </form>
+      </v-card>
+      <v-card width="90%" class="mx-auto elevation-2">
+        <v-simple-table>
+          <template v-slot:default>
+            <thead>
+              <tr>
+                <th class="text-left">ID</th>
+                <th class="text-left">Name</th>
+                <th class="text-left">Age</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="item in student" :key="item.name">
+                <td>{{ item.id }}</td>
+                <td>{{ item.name }}</td>
+                <td>{{ item.age }}</td>
+              </tr>
+            </tbody>
+          </template>
+        </v-simple-table>
       </v-card>
     </v-main>
   </v-app>
@@ -81,18 +67,26 @@ export default {
     // HelloWorld,
   },
 
-  data: () => ({
-    student: {
+  data() {
+    return {
       name: "",
-      age: 0,
+      age: "",
+      student: [],
+    };
+  },
+  methods: {
+    addStudent: function () {
+      var studentObj = {};
+      studentObj["name"] = this.name;
+      studentObj["age"] = this.age;
+      axios
+        .post(
+          "https://ld11fao915.execute-api.ap-southeast-1.amazonaws.com/production/",
+          studentObj
+        )
+        .then((response) => console.log(response));
     },
-  }),
-  // methods: {
-  //   async getAllStudents() {
-  //     const allStudents = await BEClient.loadAllStudents();
-  //     console.log(allStudents.data);
-  //   },
-  // },
+  },
   mounted() {
     // BEClient.loadAllStudents({}).then((response) => {
     //   if (response.status == 200) {
@@ -100,8 +94,11 @@ export default {
     //     console.log(this.data);
     //   }
     // });
-    axios.get("https://ld11fao915.execute-api.ap-southeast-1.amazonaws.com/production/")
-      .then((response) => (console.log(response)));
+    axios
+      .get(
+        "https://ld11fao915.execute-api.ap-southeast-1.amazonaws.com/production/"
+      )
+      .then((response) => (this.student = response.data.students));
   },
 };
 </script>
