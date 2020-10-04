@@ -1,7 +1,8 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const routes = require('./routes/index');
-var serveStatic = require('serve-static')
+var serveStatic = require('serve-static');
+const path = require('path');
 // Instantiate express
 const app = express();
 // Set our port
@@ -21,16 +22,17 @@ app.use((req, res, next) => {
 });
 
 // Register our routes in app
-app.use('/', routes);
+app.use('/api', routes);
 app.use('/', serveStatic(path.join(__dirname, 'frontend/dist')))
+
 app.get(/.*/, function (req, res) {
     res.sendFile(path.join(__dirname, '/frontend/dist/index.html'))
 })
 
 // Start our server
-// app.listen(port, () => {
-//     console.log(`Server started on port ${port}`);
-// });
+app.listen(port, () => {
+    console.log(`Server started on port ${port}`);
+});
 // Export our app for testing purposes
 // export default app;
 
