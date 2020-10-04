@@ -2,9 +2,13 @@
 //This file is AWS Lambda entry point
 //All your business code (ExpressJS App) should be done in src/app.js
 
-const awsServerlessExpress = require('aws-serverless-express');
+// const awsServerlessExpress = require('aws-serverless-express');
+// const app = require('./server');
+// const server = awsServerlessExpress.createServer(app)
+
+
+// module.exports.handler = (event, context) => awsServerlessExpress.proxy(server, event, context);
+
+const serverless = require('serverless-http');
 const app = require('./server');
-const server = awsServerlessExpress.createServer(app)
-
-
-module.exports.handler = (event, context) => awsServerlessExpress.proxy(server, event, context);
+module.exports.handler = serverless(app);
