@@ -8,6 +8,18 @@ provider:
  stage: production
  region: ap-southeast-1 # AWS region
 
+package:
+  exclude:
+    - 'tests/**'
+    - 'tests-integration/**'
+    - '.idea/**'
+    - 'serverless-configs/**'
+    - 'envs/**'
+    - 'support/**'
+    - 'node_modules/.cache/**'
+    - 'scripts/**'
+    - 'frontend/**'
+
 functions:
  api:
    handler: index.handler
