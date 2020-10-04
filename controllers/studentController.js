@@ -57,9 +57,10 @@ class StudentController {
             const findStudent = students.find(student => student.id === parseInt(req.params.id, 10));
             if (findStudent) {
                   // console.log(findStudent.id);
-                  pos = myArray.map(function (e) {
+                  var pos = students.map(function (e) {
                         return e.id;
                   }).indexOf(findStudent.id);
+                  console.log(pos)
                   students.splice(pos, 1);
                   return res.status(200).json({
                         message: "Student record removed",
