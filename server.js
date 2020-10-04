@@ -10,8 +10,16 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 app.use(bodyParser.json());
+
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    next();
+});
+
 // Register our routes in app
 app.use('/', routes);
+
+
 // Start our server
 // app.listen(port, () => {
 //     console.log(`Server started on port ${port}`);
