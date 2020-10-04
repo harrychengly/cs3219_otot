@@ -10,7 +10,7 @@ provider:
 
 functions:
  api:
-   handler: lambda.handler
+   handler: index.handler
    events:
      - http: ANY {proxy+}
      - http: ANY /
